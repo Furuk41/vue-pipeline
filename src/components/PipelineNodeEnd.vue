@@ -23,6 +23,6 @@ export default {
 .pipeline-node-end__text {
   stroke: none;
   fill: #333;
-  font-size: 12px;
+  /* font-size: 12px; */
 }
 </style>

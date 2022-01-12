@@ -21,7 +21,7 @@ export class EdgeService {
   drawEdge(start, end) {}
 
   drawVerticalEdge(start, end) {
-      const radius=14
+    const radius=14
     return `M ${start.x},${start.y + radius} L${start.x},${start.y + radius} ${end.x},${
       end.y - radius
     }`;
@@ -89,22 +89,22 @@ class DefaultStyleService extends EdgeService {
     if (end.y > start.y) {
       // 左上到右下
       let firstCorner = end.x - start.x - 50;
-      const d = `M ${start.x + 10} ${start.y}\
+      const d = `M ${start.x + 70} ${start.y}\
                 l ${20} 0\
                 ${rt} \
                 l 0 ${midy - 24} \
                 ${lb} \
-                l ${firstCorner - 20} 0
+                l ${firstCorner - 80} 0
             `;
       return d;
     } else {
       let lastCorner = end.x - start.x - 50;
-      const d = `M ${start.x + 14} ${start.y}\
+      const d = `M ${start.x -30} ${start.y}\
         l ${lastCorner - 20} 0\
         ${rb} \
         l 0 -${midy - 24} \
         ${lt} \
-        l ${20} 0
+        l ${61} 0
         `;
       // console.log(d)
       return d;

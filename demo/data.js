@@ -7,7 +7,8 @@ const hue3 = {
       next: [{ index: 1, weight: 2 }]
     },
     {
-      name: "Ammouncement Import",
+      name: "Ammouncement Import test asdf asdf qwerasddddddddd asdad asd ada dasdasda",
+      date: "2022-01-10",
       hint: "1m23s",
       status: "success",
       next: [

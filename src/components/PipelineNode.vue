@@ -6,8 +6,17 @@
 
     <g v-if="status!=='start' && status!=='end'">
       <g>
-        <text :x="getText().x" :y="getText().y" class="pipeline-node-label">{{getText().text}}</text>
-        <title>{{label}}</title>
+        <foreignObject :x="getText().x" :y="getText().y" :height="getText().height" class="pipeline-node-label">
+          <div class="div-bottom">
+            <strong>{{date}}</strong>
+          </div>
+        </foreignObject>
+        <foreignObject :x="getText().x" :y="20" :height="getText().height" class="pipeline-node-label">
+          <div>
+            {{getText().text}}
+          </div>
+        </foreignObject>
+        <!-- <title>{{label}}</title> -->
       </g>
       <g class="svgResultStatus">
         <circle cx="0" cy="0" r="12" :class="'circle-bg '+status"></circle>
@@ -49,7 +58,6 @@
   </g>
 </template>
 <script>
-import stringWidth from 'string-width'
 import PipelineNodeStart from './PipelineNodeStart'
 import PipelineNodeEnd from './PipelineNodeEnd'
 export default {
@@ -69,6 +77,10 @@ export default {
     },
     label: {
       type: String
+    },
+    date: {
+      type: String,
+      default: ""
     },
     x: {
       type: Number
@@ -91,15 +103,13 @@ export default {
   },
   methods: {
     getText() {
-      let maxLength = 14
-      let text =
-        this.label.length > maxLength
-          ? this.label.substring(0, maxLength) + '...'
-          : this.label
-      let width = stringWidth(text)
+      let maxLength = 19
+      let heightLabel = 80
+      let text = this.label
       return {
-        x: -width * 2.7,
-        y: -20,
+        x: -maxLength * 4.7,
+        y: -(heightLabel + 20) ,
+        height: heightLabel ,
         text
       }
     },
@@ -166,22 +176,37 @@ export default {
 }
 
 .pipeline-node-label {
-  font: 12px sans-serif;
-  font-size: 12px;
+  /* font: 12px sans-serif; */
+  /* font-size: 12px; */
   /* fill: red; */
-  width: 100px;
-  overflow: hidden;
-  overflow-wrap: break-word;
+  /* overflow: hidden; */
+  /* overflow-wrap: break-word; */
   /* top: 140px; */
   /* left: 339px; */
-  position: absolute;
-  width: 89px;
+  position: relative;
+  width: 180px;
   /* max-height: 39px; */
   text-align: center;
 }
-.running {
+
+.div-bottom {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  margin: 0 auto;
+}
+
+.svgResultStatus > .running {
   fill: #8ccc4f;
-  animation: rotating 2s linear infinite;
+  animation: spin 2s linear infinite;
   animation-iteration-count: infinite;
+}
+
+@keyframes spin { 
+  100% { 
+      -webkit-transform: rotate(360deg); 
+      transform:rotate(360deg); 
+  } 
 }
 </style>

@@ -101,9 +101,9 @@ export default {
       data: hue1.nodes,
       form: {
         x:50,
-        y: 55,
-        xstep: 120,
-        ystep: 70,
+        y:255,
+        xstep: 200,
+        ystep: 200,
         data: 0,
         showArrow: true,
         lineStyle: "default",

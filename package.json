@@ -18,7 +18,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test": "ava test/*.test.js --verbose",
+    "test": "ava test/service.test.js --verbose",
     "lint": "eslint --quiet --cache --ext .vue,.js, src/** ./demo/*.{js,vue}",
     "preversion": "npm test && npm run lint",
     "version": "git add .",
